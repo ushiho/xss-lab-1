@@ -9,7 +9,9 @@
   <body id="level1">
 
     <center> 
-      <img src="{{url_for('static', filename='DP.png')}}" style="margin-top: 20px; width: 500px; height: 100px">
+	<h4>XSS level one</h4>
+      <img src="{{url_for('static', filename='DP.png')}}"
+	style="margin-top: 20px; width: 250px; height: 50px">
       <br>
         <div style="margin-top: 20px">
           <form action="/xss-game/python/index" method="GET" name="search">
