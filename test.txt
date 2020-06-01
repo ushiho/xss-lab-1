@@ -1,2 +1,5 @@
 bla bla bla bla
+HEAD
 ADd another bla bla blax
+=======
+bla bla bla bla From github
