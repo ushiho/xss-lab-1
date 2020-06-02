@@ -3,3 +3,5 @@ HEAD
 ADd another bla bla blax
 =======
 bla bla bla bla From github
+
+add to test revert command result ;)
