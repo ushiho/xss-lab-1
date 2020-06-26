@@ -1,6 +1,6 @@
 <h3>Vulnerable applications Structure</h3>
 <pre><span></span>[labname]/
-├──
+├──|
 │&nbsp;&nbsp; ├── app/
 |&nbsp;&nbsp;&nbsp; ├── file_app_1
 |&nbsp;&nbsp;&nbsp; ├── file__app_2
