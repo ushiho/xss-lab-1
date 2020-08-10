@@ -3,13 +3,13 @@
 import sys, os
 from attack import Attack
 
+URL = 'http://127.0.0.1:5000/'
+PAYLOAD = '<script>alert("vulnerable")</script>'
 
-def main(url):
-	# app.app.run(host="127.0.0.10", port=5000, debug=True)
-	attack = Attack(url)
-	payload = '&lt;script&gt;alert("vulnerable");&lt;/script&gt;'
+def main():
+	attack = Attack(URL)
 
-	res = attack.run(payload)
+	res = attack.run(PAYLOAD)
 	if res:
 		msg = "The app is vulnerable"
 	else:
@@ -17,7 +17,5 @@ def main(url):
 	return (res, msg)
 
 if __name__ == '__main__':
-	if len(sys.argv) > 1:
-		print(main(sys.argv[1]))
-	else:
-		raise ValueError("required parameter: url")
+	res = main()
+	print(res)

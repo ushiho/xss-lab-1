@@ -38,5 +38,5 @@ class Attack:
 
 		final_result = form_submit.response().read().decode()
 
-		is_vulnerable = bool(final_result.find('&lt;script&gt;') > 0)
+		is_vulnerable = bool(final_result.find(payload) > 0)
 		return is_vulnerable
