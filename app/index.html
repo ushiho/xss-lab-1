@@ -1,31 +1,49 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <!-- Internal game scripts/styles, mostly boring stuff -->
-    <script type="text/javascript">
-      
-    </script>
-  </head>
+<head>
 
-  <body id="level1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XSS|CSS</title>
 
-    <center>
-	<h4>Level one</h4>
-	<h1>Added in branch master after the commit of test_form branch</h1>
-	<h5>Added in form_test branch</h5>
-	<br/>
-      <img src="{{url_for('static', filename='DP.png')}}" 
-	style="margin-top: 20px; width: 250px; height: 50px">
-      <br>
-        <div style="margin-top: 20px">
-          <form action="/xss-game/python/index" method="GET" name="search">
-            <input id="query" name="query" value="Enter query here..." onfocus="this.value=''">
-            <input id="button" type="submit" value="Search">
-          </form>
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <img src="/static/img/DP.png" width="170" height="35"  class="responsive">
       </div>
-        <p>
-          {% autoescape false %}{{message}}{% endautoescape %}
-        </p>
-    </center>
-  </body>
-  <script type="text/javascript"></script>
+    </div>
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <div class="card mt-4">
+          <div class="card-header" style="text-transform: uppercase;">XSS: Cross-site scripting</div>
+          <div class="card-body">
+            <div class="col-md-6 offset-md-3 text-center mt-2">
+              {% if message %}
+              <div class="alert alert-danger" role="alert">
+                {% autoescape false %}{{message}}{% endautoescape %}
+              </div>
+              {% endif %}
+            </div>
+            <!-- END -->
+            <form action="/" method="GET" name="search">
+              <div class="row mt-5 mb-5">
+                <div class="col-md-6 ml-3">
+                  <input style="font-size: 13px" id="query" class="form-control" name="query" type="text" required onfocus="this.value=''"/>
+                </div>
+                <div class="col-md-3 col-sm-6 mt-3 offset-md-2 offset-sm-3">
+                            <button style="cursor: pointer;" class="btn btn-primary btn-block btn-sm" type="submit">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 </html>

@@ -3,13 +3,8 @@ from flask import Blueprint
 
 app = Flask(__name__, template_folder='.', static_url_path='/static')
 
-@app.route('/')
-@app.route('/xss-game/python')
-def xss():
-    return render_template("index.html")
 
-
-@app.route('/xss-game/python/index', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home_xss():
     # query = request.form['query']
     if not request.args.get('query'):
